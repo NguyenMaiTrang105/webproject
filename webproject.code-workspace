@@ -1,0 +1,10 @@
+{
+  "folders": [
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "fontawesome-free-6.6.0-web"
+  }
+}

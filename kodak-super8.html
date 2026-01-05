@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        display: flex;
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        flex-wrap: wrap;
+        padding:2rem 9%;
+      }
+
+      .product-image {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 8px;
+        text-align: center;
+        transition: transform 0.2s;
+        margin-top: 40px;
+        margin-right: 20px;
+      }
+      .product-image :hover {
+        transform: scale(1.05);
+      }
+
+      .product-image img {
+        max-width: 90%;
+        height: 200px;
+        width: 200px;
+        border-radius: 8px;
+      }
+
+      /* Shrink image on hover */
+      .product-images img:hover {
+        transform: scale(0.9); /* Shrinks image to 90% of its size */
+      }
+
+      /* Product Details Section */
+      .product-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .product-details h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        white-space: nowrap;
+        margin-top: 60px;
+      }
+
+      .product-details .price {
+        font-size: 24px;
+        color: #da0b0b;
+        margin-bottom: 5px;
+      }
+
+      .product-details .tag {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 20px;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+      }
+
+      .add-to-cart,
+      .cta-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        align-items: center;
+        margin-top: 30px;
+        margin-right: 30px;
+      }
+
+      .quantity-selector input {
+        width: 50px;
+        text-align: center;
+        font-size: 16px;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: black;
+        color: white;
+      }
+
+      .add-to-cart button,
+      .cta-buttons button {
+        background-color: black;
+        color: #ebdcb2;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+      }
+
+      .cta-buttons .chat {
+        background-color: #c9a66b;
+        color: black;
+      }
+
+      .add-to-cart button:hover,
+      .cta-buttons button:hover {
+        background-color: #7a6630;
+      }
+
+      .cta-buttons .chat:hover {
+        background-color: #6e6a65;
+      }
+      /* Product Description Section */
+      .product-description {
+        margin-top: 20px;
+        background-color: #c9a66b;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+      }
+
+      .key-feature {
+        list-style-type: none;
+        padding-left: 0;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      .key-feature li {
+        margin-bottom: 10px;
+      }
+
+      .product-description h3 {
+        font-size: 1.7rem;
+        text-align: justify;
+        color: black;
+        line-height: 1.5;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+      }
+      .Buy-now-text {
+        text-decoration: none;
+        color: #ebdcb2;
+      }
+      /* Responsive Styles */
+      @media (max-width: 991px) {
+        html {
+          font-size: 55%;
+        }
+        header {
+          padding: 2rem;
+        }
+        section {
+          padding: 2rem;
+        }
+        .home {
+          background-position: left;
+        }
+      }
+      @media (max-width: 768px) {
+        header .fa-bars {
+          display: block;
+        }
+        header .header__navbar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          background: white;
+          border-top: 0.1 rem solid rgba(0, 0, 0, 0.1);
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        }
+        header #toggler:checked ~ .header__navbar {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        header .header__navbar a {
+          margin: 1.5rem;
+          padding: 1.5rem;
+          background: white;
+          border: 0.1rem solid rgba(0, 0, 0, 0.1);
+          display: block;
+        }
+        .home.Introduction h3 {
+          font-size: 5rem;
+        }
+        .product-details h1 {
+          font-size: 20px;
+        }
+      }
+      @media (max-width: 540px) {
+        .product-details h1 {
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 450px) {
+        html {
+          font-size: 50%;
+        }
+        .heading {
+          font-size: 3rem;
+        }
+        .product-details .price {
+          font-size: medium;
+        }
+        .key-feature {
+          font-size: 1.3rem;
+        }
+        .product-description h3 {
+          font-size: 1.4rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .product-details {
+          padding-left: 0;
+          margin-top: 20px;
+        }
+
+        .product-images img {
+          width: 100%; /* Full width on smaller screens */
+        }
+        .product-images {
+          width: 50%;
+        }
+        .product-details h1 {
+          font-size: 12px;
+        }
+      }
+    </style>
+    <header>
+      <input type="checkbox" name="" id="toggler" />
+      <label for="toggler" class="fa fa-bars"></label>
+      <a href="#" class="logo">Prism Diary</a>
+      <nav class="header__navbar">
+        <a href="index.html" class="">Home</a>
+        <a href="#about" class="">About</a>
+        <a href="product.html" class="">Products</a>
+        <a href="#review" class="">Review</a>
+        <a href="#contact" class="">Contact</a>
+      </nav>
+      <div class="icons">
+        <a href="" class="fa fa-heart"> </a>
+        <a href="" class="fa fa-shopping-cart"> </a>
+        <a href="signin.html" class="fa fa-user"> </a>
+      </div>
+    </header>
+    <div class="container">
+      <div class="product-image">
+        <img src="./img/1701182416_1798046.jpg" alt="Sony cyber shot" />
+      </div>
+      
+      <div class="product-image">
+        <img src="./img/1700675163_IMG_2131110.jpg" alt="Sony cyber shot" />
+      </div>
+      <div class="product-details">
+        <h1>Kodak Super 8 Camera (Black)</h1>
+        <p class="tag">BH #KOSUPER8B • MFR #7445356</p>
+        <p class="price">$5,495.00</p>
+      </div>
+      <div class="add-to-cart">
+        <div class="quantity-selector">
+          <input type="number" value="1" min="1" />
+        </div>
+        <button>Add to cart</button>
+      </div>
+      <div class="cta-buttons">
+        <button class="buy-now">
+          <a href="buy-now.html" class="Buy-now-text">Buy now</a>
+        </button>
+        <button class="chat">Chat now</button>
+      </div>
+      <div class="product-description">
+        <ul class="key-feature">
+          <li>Accepts Standard Super 8 Film Cartridges</li>
+          <li>Extended Gate Super 8 Format</li>
+          <li>C Lens Mount; 6mm f/1.2 Lens Included</li>
+          <li>Frame Rates: 18, 24, 25, 36 fps</li>
+        </ul>
+        <h3>
+          <i>
+            Super 8 is back! Kodak has spent years developing a modern film
+            movie camera and the result of all that work is the Super 8 Camera.
+            Blending modern design and conveniences with analog filmmaking, this
+            Super 8 Camera is a brilliant revival of the classic moviemaking
+            aesthetic.
+          </i>
+        </h3>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="" class="">About us</a></li>
+              <li><a href="" class="">Our services</a></li>
+              <li><a href="" class="">Privacy policy</a></li>
+              <li><a href="" class="">Affiliate program</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-col">
+            <h4>Get help</h4>
+            <ul>
+              <li><a href="" class="">FAQ</a></li>
+              <li><a href="">Shipping</a></li>
+              <li><a href="">Returns</a></li>
+              <li><a href="">Order status</a</li>
+              <li><a href="" class="">Payment options</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Online shop</h4>
+            <ul>
+              <li><a href="digital-cam.html" class="">Digital camera</a></li>
+              <li><a href="film.camera.html" class="">Film camera</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Follow us</h4>
+            <div class="social-links">
+              <a href="#" class="fa fa-facebook" ></a>
+              <a href="#" class="fa fa-instagram" ></a>
+              <a href="#" class="fa fa-twitter" ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

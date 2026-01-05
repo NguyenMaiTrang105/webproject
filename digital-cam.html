@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <style>
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 30px;
+        background-color: #ffffff;
+      }
+      .body {
+        background-color: #ffffff;
+      }
+      .product {
+        background: whites;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.2s;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .product:hover {
+        transform: scale(1.05);
+      }
+      .product img {
+        max-width: 100%;
+        height: 200px;
+        width: 300px;
+        border-radius: 8px;
+      }
+      .product h3 {
+        font-size: 1.2em;
+        margin: 10px 0;
+        color: black;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        font-weight: weight;
+        font-style: normal;
+      }
+      .product p {
+        margin-bottom: 10px;
+        font-size: 2rem;
+        color:red;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+      }
+      .product button {
+        padding: 10px 15px;
+        background-color: black;
+        color: #ebdcb2;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+      }
+      .button {
+        text-decoration: none;
+        color: #ebdcb2;
+      }
+      .product button:hover {
+        background-color: rgb(96, 91, 91);
+      }
+      .Introduction h3{
+        font-size: 2rem;
+      }
+    </style>
+    <header>
+      <input type="checkbox" name="" id="toggler" />
+      <label for="toggler" class="fa fa-bars"></label>
+      <a href="#" class="logo">Prism Diary</a>
+      <nav class="header__navbar">
+        <a href="index.html" class="">Home</a>
+        <a href="" class="">About</a>
+        <a href="product.html" class="">Products</a>
+        <a href="" class="">Review</a>
+        <a href="" class="">Contact</a>
+      </nav>
+      <div class="icons">
+        <a href="" class="fa fa-heart"> </a>
+        <a href="" class="fa fa-shopping-cart"> </a>
+        <a href="signin.html" class="fa fa-user"> </a>
+      </div>
+    </header>
+    <section class="home" id="home">
+      </div>
+    </section>
+    <div class="body">
+      <h1 class="heading">LATEST PRODUCTS</h1>
+      <div class="container">
+        <div class="product">
+          <img
+            src="./img/sony_dsc_hx300_b_cyber_shot_dsc_hx300_digital_camera_1361778917_926281.jpg"
+            alt="Sony cyber shot"
+          />
+          <h3>Sony cyber shot HX300</h3>
+          <p>$250.50</p>
+          <button>
+            <a href="sony-HX300.html" class="button">View</a>
+          </button>
+        </div>
+        <div class="product">
+          <img src="./img/R (1).jpg" alt="Sony cyber shot W350" />
+          <h3>Sony cyber shot W350</h3>
+          <p>$120.00</p>
+          <button>
+            <a href="sony-cyber-shot-W350.html" class="button">View</a>
+          </button>
+        </div>
+        <div class="product">
+          <img
+            src="./img/sony_dsc_w730_p_cyber_shot_w730_digital_camera_910816.jpg"
+            alt="Sony cyber shot W730"
+          />
+          <h3>Sony cyber shot W730</h3>
+          <p>$101.50</p>
+          <button>
+            <a href="sony-cyber-shot-w730.html" class="button">View</a>
+          </button>
+        </div>
+        <div class="product">
+          <img
+            src="./img/Nikon_26314_Coolpix_S9300_Digital_Camera_1328034915_842361.jpg"
+            alt="Nikon Coolpix S9300"
+          />
+          <h3>Nikon Coolpix S9300</h3>
+          <p>$167.00</p>
+          <button>
+            <a href="nikon-coolpix.html" class="button">View</a>
+          </button>
+        </div>
+        <div class="product">
+          <img
+            src="./img/leica_19188_sofort_2_hybrid_instant_1697112329_1789991.jpg"
+            alt="Leica SOFORT 2 "
+          />
+          <h3>Leica SOFORT 2 Hand Take</h3>
+          <p>$399.00</p>
+          <button>
+            <a href="leica-sofort.html" class="button">View</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="" class="">About us</a></li>
+              <li><a href="" class="">Our services</a></li>
+              <li><a href="" class="">Privacy policy</a></li>
+              <li><a href="" class="">Affiliate program</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-col">
+            <h4>Get help</h4>
+            <ul>
+              <li><a href="" class="">FAQ</a></li>
+              <li><a href="">Shipping</a></li>
+              <li><a href="">Returns</a></li>
+              <li><a href="">Order status</a</li>
+              <li><a href="" class="">Payment options</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Categorize</h4>
+            <ul>
+              <li><a href="digital-cam.html" class="">Digital camera</a></li>
+              <li><a href="film.camera.html" class="">Film camera</a></li>
+              <li><a href="analog.camera.html" class="">Analog camera</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Follow us</h4>
+            <div class="social-links">
+              <a href="#" class="fa fa-facebook" ></a>
+              <a href="#" class="fa fa-instagram" ></a>
+              <a href="#" class="fa fa-twitter" ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
