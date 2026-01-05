@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="register-form">
+      <label>Username</label>
+      <input id="username-res" type="text" required placeholder="Username" />
+
+      <label>Password</label>
+      <input
+        id="password-res"
+        type="password"
+        required
+        placeholder="Password"
+      />
+
+      <label>Re-enter pass</label>
+      <input id="re-res" type="password" required placeholder="Re-enter" />
+
+      <button type="submit" class="btn">Register</button>
+    </form>
+
+    <div id="login-form" style="display: none">
+      <h2>Login</h2>
+      <label>Username</label>
+      <input id="username-log" type="text" required placeholder="Username" />
+
+      <label>Password</label>
+      <input
+        id="password-log"
+        type="password"
+        required
+        placeholder="Password"
+      />
+
+      <button id="login-btn" class="btn">Login</button>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
