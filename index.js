@@ -3,11 +3,22 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs/promises");
 const path = require("path");
+const session = require("express-session");
 const app = express();
 const bcrypt = require("bcrypt");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: "my_secret_key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+    },
+  })
+);
 const userPath = path.join(__dirname, "users.json");
 app.post("/register", async (req, res) => {
   let { username, password, repass } = req.body;
@@ -69,7 +80,35 @@ app.post("/login", async (req, res) => {
   if (!isMatch) {
     return res.json({ message: "Password does not match" });
   }
-  return res.json({ message: "Login successfully" });
+  req.session.user = {
+    username: username,
+  };
+  return res.redirect("/profile");
+});
+app.get("/profile", (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+  res.send(`
+    <h1>Profile</h1>
+    <p>Username: ${req.session.user.username}</p>
+    <a href="/logout">Logout</a>
+  `);
+});
+app.get("/login", (req, res) => {
+  res.send(`
+    <h1>Login</h1>
+    <form method="POST" action="/login">
+      <input name="username" placeholder="Username" />
+      <input type="password" name="password" placeholder="Password" />
+      <button>Login</button>
+    </form>
+  `);
+});
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/login");
+  });
 });
 app.listen(3000, () => {
   console.log(`Server running on http://localhost:3000`);
