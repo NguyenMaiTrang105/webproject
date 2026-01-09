@@ -45,11 +45,13 @@ async function login(e) {
   try {
     const response = await fetch("http://localhost:3000/login", {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
     const data = await response.json();
     result_log.innerHTML = data.message;
+    window.location.href = "/profile.html indicates";
   } catch (err) {
     console.log(err);
     result_log.innerHTML = "Error connecting to server";

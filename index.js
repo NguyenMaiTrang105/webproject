@@ -6,7 +6,12 @@ const path = require("path");
 const session = require("express-session");
 const app = express();
 const bcrypt = require("bcrypt");
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -16,19 +21,44 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
     },
   })
 );
+function validatePassword(password) {
+  if (password.length < 8) {
+    return "Password must be at least 8 characters long";
+  }
+  if (!/[A-Z]/.test(password)) {
+    return "Password must contain at least one uppercase letter";
+  }
+  if (!/[a-z]/.test(password)) {
+    return "Password must contain at least one lowercase";
+  }
+  if (!/[0-9]/.test(password)) {
+    return "Password must contain at least one number";
+  }
+  return null;
+}
 const userPath = path.join(__dirname, "users.json");
 app.post("/register", async (req, res) => {
   let { username, password, repass } = req.body;
   username = username ? username.trim() : "";
-  if (!username || !password) {
-    return res.json({ message: "Please fill in all blank" });
+  if (!username || !password || !repass) {
+    return res.status(400).json({ message: "Please fill in all blank" });
+  }
+  if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+    return res.status(400).json({ message: "Invalid username" });
   }
   if (repass !== password) {
     return res.json({ message: "Password do not match" });
   }
+  const passwordError = validatePassword(password);
+  if (passwordError) {
+    return res.status(400).json({ message: passwordError });
+  }
+
   try {
     await fs.access(userPath);
   } catch {
@@ -44,6 +74,7 @@ app.post("/register", async (req, res) => {
   if (users[username]) {
     return res.status(400).json({ message: "Username already exists" });
   }
+
   const hashedPassword = await bcrypt.hash(password, 10);
   users[username] = {
     password: hashedPassword,
@@ -64,7 +95,9 @@ async function loadUser() {
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
-    return res.json({ message: "Please enter username and password" });
+    return res
+      .status(400)
+      .json({ message: "Please enter username and password" });
   }
   let users;
   try {
@@ -73,17 +106,13 @@ app.post("/login", async (req, res) => {
     return res.status(500).json({ message: "Cannot read users file" });
   }
   const user = users[username];
-  if (!user) {
-    return res.json({ message: "Username is incorrect" });
-  }
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
-    return res.json({ message: "Password does not match" });
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return res.status(401).json({ message: "Invalid username or password" });
   }
   req.session.user = {
     username: username,
   };
-  return res.redirect("/profile");
+  return res.json({ message: "Login successful" });
 });
 app.get("/profile", (req, res) => {
   if (!req.session.user) {
